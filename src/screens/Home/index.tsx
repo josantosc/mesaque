@@ -15,6 +15,9 @@ export function Home() {
 
 const styles = StyleSheet.create({
   Container: {
+    flex: 1,
+    paddingTop: 24,
+    paddingHorizontal: 16,
     width: "100%",
   },
 });
