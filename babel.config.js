@@ -14,6 +14,8 @@ module.exports = function (api) {
             "@screens": "./src/screens",
             "@storage": "./src/storage",
             "@utils": "./src/utils",
+            "@services": "./src/services",
+            "@shared": "./src/shared",
           },
         },
       ],
