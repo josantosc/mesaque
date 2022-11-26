@@ -1,25 +1,40 @@
 import { StyleSheet, View, Text } from "react-native";
-import { Card } from "@components/Card";
 
-export function Agenda() {
-  const agendas = [
-    { title: "01/10 - Culto de Jovens" },
-    { title: "02/10 - EBD" },
-    { title: "02/10 - Culto de Domingo" },
-  ];
+import { Card } from "@components/Card";
+import { useAgenda } from "@shared/hooks/useAgenda";
+
+export function AgendaScreen() {
+  const agenda = useAgenda();
+
+  const daysMap: Record<string, string> = {
+    Domingo: "sunday",
+    "Segunda-Feira": "monday",
+    "Terça-Feira": "tuesday",
+    "Quarta-Feira": "wednesday",
+    "Quinta-Feira": "thursday",
+    "Sexta-Feira": "friday",
+    Sábado: "saturday",
+  };
+
+  const daysOfWeek = Object.keys(daysMap);
 
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Agenda</Text>
       </View>
-      {agendas.map((agenda) => (
-        <Card key={agenda.title} style={{ marginBottom: 16 }}>
-          <View style={styles.agendaContainer}>
-            <View style={styles.agendaImage} />
-            <Text style={styles.agendaTitle}>{agenda.title}</Text>
-          </View>
-        </Card>
+      {daysOfWeek.map((name) => (
+        <>
+          <Text>{name}</Text>
+          {agenda[daysMap[name]].map((el) => (
+            <Card key={el.title} style={{ marginBottom: 16 }}>
+              <View style={styles.agendaContainer}>
+                <View style={styles.agendaImage} />
+                <Text style={styles.agendaTitle}>{el.title}</Text>
+              </View>
+            </Card>
+          ))}
+        </>
       ))}
     </View>
   );
