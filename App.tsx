@@ -5,10 +5,10 @@ import {
 } from "@expo-google-fonts/roboto";
 import { StatusBar } from "react-native";
 import { ThemeProvider } from "styled-components";
+import { NavigationContainer } from "@react-navigation/native";
 
 import { Loading } from "@components/Loading";
-
-import { Home } from "@screens/Home";
+import { AppRoutes } from "@routes/app";
 
 import theme from "./src/theme";
 
@@ -25,7 +25,9 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      {fontsLoaded ? <Home /> : <Loading />}
+      <NavigationContainer>
+        {fontsLoaded ? <AppRoutes /> : <Loading />}
+      </NavigationContainer>
     </ThemeProvider>
   );
 }
