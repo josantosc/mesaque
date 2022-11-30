@@ -1,39 +1,24 @@
-import { StyleSheet, View, Text } from "react-native";
+import { Card } from "@components/Card";
 import { Title } from "@components/Title";
+import { Subtitle } from "@components/Subtitle";
+import { Paragraph } from "@components/Paragraph";
 
-import { Card } from "../../../components/Card";
+import { CardContainer, Container } from "./styles";
 
 export function DailyVerse() {
+  const chapter = "Mateus 6:33";
+  const content =
+    "Busquem, pois, em primeiro lugar o Reino de Deus e a sua justiça, e todas essas coisas lhes serão acrescentadas.";
+
   return (
-    <View>
+    <Container>
       <Title content="Versículo do dia"></Title>
       <Card>
-        <View style={styles.card}>
-          <Text style={styles.chapter}>Mateus 6:33</Text>
-          <Text style={styles.verse}>
-            Busquem, pois, em primeiro lugar o Reino de Deus e a sua justiça, e
-            todas essas coisas lhes serão acrescentadas.
-          </Text>
-        </View>
+        <CardContainer>
+          <Subtitle content={chapter} />
+          <Paragraph content={content} style={{ marginTop: 8 }} />
+        </CardContainer>
       </Card>
-    </View>
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  card: {
-    margin: 12,
-    marginHorizontal: 8,
-  },
-  chapter: {
-    marginBottom: 8,
-    fontSize: 16,
-    lineHeight: 24,
-    fontWeight: "600",
-  },
-  verse: {
-    fontSize: 12,
-    lineHeight: 16,
-    fontWeight: "400",
-  },
-});
