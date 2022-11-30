@@ -1,6 +1,8 @@
-import Mdicons from "@expo/vector-icons/MaterialIcons";
+import { useCallback } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 import logoImg from "@assets/favicon.png";
+import { AppStackNavigationProps } from "@routes/app/stack-params";
 
 import { Container, Logo, BackButton, BackIcon } from "./styles";
 
@@ -9,10 +11,16 @@ type Props = {
 };
 
 export function Header({ showBackButton = false }: Props) {
+  const { goBack } = useNavigation<AppStackNavigationProps>();
+
+  const handleOnPress = useCallback(() => {
+    goBack();
+  }, []);
+
   return (
     <Container>
       {showBackButton && (
-        <BackButton>
+        <BackButton onPress={handleOnPress}>
           <BackIcon name="arrow-back-ios" />
         </BackButton>
       )}
