@@ -1,3 +1,5 @@
+import { FlatList } from "react-native";
+
 import { useAgenda } from "@shared/hooks/useAgenda";
 
 import { Card } from "@components/Card";
@@ -27,19 +29,22 @@ export function Agenda() {
       <PageTitleContainer>
         <Title content="Agenda" />
       </PageTitleContainer>
-      {daysOfWeek.map((name) => (
-        <>
-          <Subtitle content={name} style={{ marginBottom: 8 }} />
-          {agenda[daysMap[name]].map((el) => (
-            <Card key={el.title} style={{ marginBottom: 16 }}>
-              <CardContainer>
-                <Image />
-                <Text content={el.title} />
-              </CardContainer>
-            </Card>
-          ))}
-        </>
-      ))}
+      <FlatList
+        data={daysOfWeek}
+        renderItem={({ item }) => (
+          <>
+            <Subtitle content={item} style={{ marginBottom: 8 }} />
+            {agenda[daysMap[item]].map((el) => (
+              <Card key={el.title} style={{ marginBottom: 16 }}>
+                <CardContainer>
+                  <Image />
+                  <Text content={el.title} />
+                </CardContainer>
+              </Card>
+            ))}
+          </>
+        )}
+      />
     </Container>
   );
 }
