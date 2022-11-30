@@ -1,17 +1,21 @@
-import { FlatList } from "react-native";
+import { useCallback } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { FlatList, TouchableOpacityProps } from "react-native";
+
+import { AppScreens, AppStackNavigationProps } from "@routes/app/stack-params";
 
 import { Card } from "@components/Card";
 import { Subtitle } from "@components/Subtitle";
 
 import { Container, ShortcutCardContainer } from "./styles";
 
-type ShortcutCardProps = {
+type ShortcutCardProps = TouchableOpacityProps & {
   title: string;
 };
 
-function ShortcutCard({ title }: ShortcutCardProps) {
+function ShortcutCard({ title, ...rest }: ShortcutCardProps) {
   return (
-    <ShortcutCardContainer>
+    <ShortcutCardContainer {...rest}>
       <Card style={{ padding: 16 }}>
         <Subtitle content={title} />
       </Card>
@@ -20,12 +24,20 @@ function ShortcutCard({ title }: ShortcutCardProps) {
 }
 
 export function Shortcuts() {
-  const data: Array<{ title: string }> = [
-    { title: "Agenda" },
-    { title: "Devocional" },
-    { title: "Eventos" },
-    { title: "Oferta" },
+  const { navigate } = useNavigation<AppStackNavigationProps>();
+
+  const data: Array<{ title: string; path?: AppScreens }> = [
+    { title: "Agenda", path: AppScreens.agenda },
+    { title: "Devocional", path: undefined },
+    { title: "Eventos", path: undefined },
+    { title: "Oferta", path: undefined },
   ];
+
+  const handleOnPress = useCallback((path?: AppScreens) => {
+    if (!path) return;
+
+    navigate(path);
+  }, []);
 
   return (
     <Container>
@@ -33,7 +45,12 @@ export function Shortcuts() {
         numColumns={2}
         data={data}
         keyExtractor={(item) => item.title}
-        renderItem={({ item }) => <ShortcutCard title={item.title} />}
+        renderItem={({ item }) => (
+          <ShortcutCard
+            title={item.title}
+            onPress={() => handleOnPress(item.path)}
+          />
+        )}
       />
     </Container>
   );

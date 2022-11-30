@@ -5,7 +5,7 @@ export const Container = styled.View`
   padding: 16px 0;
 `;
 
-export const ShortcutCardContainer = styled.View`
+export const ShortcutCardContainer = styled.TouchableOpacity`
   flex: 1;
   margin: 8px;
 `;
