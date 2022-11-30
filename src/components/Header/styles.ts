@@ -3,6 +3,7 @@ import styled from "styled-components/native";
 
 export const Container = styled.View`
   width: 100%;
+  padding: 0 16px;
   flex-direction: row;
   align-items: center;
   justify-content: center;
@@ -21,5 +22,5 @@ export const BackButton = styled.TouchableOpacity`
 
 export const BackIcon = styled(Mdicons)`
   color: ${({ theme }) => theme.COLORS.WHITE};
-  font-size: ${({ theme }) => theme.FONT_SIZE.XL};
+  font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
 `;
