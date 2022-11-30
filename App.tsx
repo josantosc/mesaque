@@ -1,14 +1,13 @@
+import { ThemeProvider } from "styled-components";
+import { StatusBar } from "react-native";
 import {
   useFonts,
   Roboto_500Medium,
   Roboto_700Bold,
 } from "@expo-google-fonts/roboto";
-import { StatusBar } from "react-native";
-import { ThemeProvider } from "styled-components";
-import { NavigationContainer } from "@react-navigation/native";
 
 import { Loading } from "@components/Loading";
-import { AppRoutes } from "@routes/app";
+import { Routes } from "./src/routes";
 
 import theme from "./src/theme";
 
@@ -25,9 +24,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <NavigationContainer>
-        {fontsLoaded ? <AppRoutes /> : <Loading />}
-      </NavigationContainer>
+      {fontsLoaded ? <Routes /> : <Loading />}
     </ThemeProvider>
   );
 }
