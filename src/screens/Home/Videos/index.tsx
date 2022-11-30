@@ -1,4 +1,7 @@
 import { StyleSheet, View, Text } from "react-native";
+
+import { Title } from "@components/Title";
+
 import { Card } from "../../../components/Card";
 
 export function Videos() {
@@ -12,7 +15,7 @@ export function Videos() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Videos</Text>
+      <Title content="Videos" />
       {videos.map((video) => (
         <Card key={video.title} style={{ marginBottom: 16 }}>
           <View style={styles.videoContainer}>
@@ -28,11 +31,6 @@ export function Videos() {
 const styles = StyleSheet.create({
   container: {
     marginTop: 24,
-  },
-  title: {
-    fontSize: 26,
-    lineHeight: 48,
-    fontWeight: "500",
   },
   videoContainer: {
     flexDirection: "row",

@@ -1,10 +1,12 @@
 import { StyleSheet, View, Text } from "react-native";
+import { Title } from "@components/Title";
+
 import { Card } from "../../../components/Card";
 
 export function DailyVerse() {
   return (
     <View>
-      <Text style={styles.title}>Versículo do dia</Text>
+      <Title content="Versículo do dia"></Title>
       <Card>
         <View style={styles.card}>
           <Text style={styles.chapter}>Mateus 6:33</Text>
@@ -19,11 +21,6 @@ export function DailyVerse() {
 }
 
 const styles = StyleSheet.create({
-  title: {
-    fontWeight: "500",
-    fontSize: 26,
-    lineHeight: 48,
-  },
   card: {
     margin: 12,
     marginHorizontal: 8,
