@@ -1,8 +1,9 @@
-import { View, StyleSheet } from "react-native";
+import { FlatList } from "react-native";
 
+import { Card } from "@components/Card";
 import { Subtitle } from "@components/Subtitle";
 
-import { Card } from "../../../components/Card";
+import { Container, ShortcutCardContainer } from "./styles";
 
 type ShortcutCardProps = {
   title: string;
@@ -10,45 +11,30 @@ type ShortcutCardProps = {
 
 function ShortcutCard({ title }: ShortcutCardProps) {
   return (
-    <Card>
-      <View style={styles.cardContainer}>
+    <ShortcutCardContainer>
+      <Card>
         <Subtitle content={title} />
-      </View>
-    </Card>
+      </Card>
+    </ShortcutCardContainer>
   );
 }
 
 export function Shortcuts() {
+  const data: Array<{ title: string }> = [
+    { title: "Agenda" },
+    { title: "Devocional" },
+    { title: "Eventos" },
+    { title: "Oferta" },
+  ];
+
   return (
-    <View>
-      <View style={styles.shortcuts}>
-        <ShortcutCard title="Agenda" />
-        <ShortcutCard title="Devocional" />
-      </View>
-      <View style={styles.shortcuts}>
-        <ShortcutCard title="Eventos" />
-        <ShortcutCard title="Oferta" />
-      </View>
-    </View>
+    <Container>
+      <FlatList
+        numColumns={2}
+        data={data}
+        keyExtractor={(item) => item.title}
+        renderItem={({ item }) => <ShortcutCard title={item.title} />}
+      />
+    </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  shortcuts: {
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    marginBottom: 21,
-  },
-  cardContainer: {
-    width: 159,
-    height: 56,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  cardTitle: {
-    fontSize: 16,
-    fontWeight: "600",
-    lineHeight: 24,
-    fontStyle: "normal",
-  },
-});
