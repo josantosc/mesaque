@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import { Card } from "@components/Card";
 import { useAgenda } from "@shared/hooks/useAgenda";
 
-export function AgendaScreen() {
+export function Agenda() {
   const agenda = useAgenda();
 
   const daysMap: Record<string, string> = {
