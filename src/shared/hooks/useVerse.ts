@@ -1,12 +1,34 @@
+import { useCallback, useEffect, useState } from "react";
+
+import { Bible } from "@shared/domain/Bible";
+import { getDailyVerse } from "@services/bible";
+
 type UseVerseReturnType = {
   title: string;
-  verse: string;
+  text: string;
 };
 
 export const useVerse = (): UseVerseReturnType => {
-  const title = "Mateus 6:33";
-  const verse =
-    "Busquem, pois, em primeiro lugar o Reino de Deus e a sua justiça, e todas essas coisas lhes serão acrescentadas.";
+  const [title, setTitle] = useState<string>("");
+  const [text, setText] = useState<string>("");
 
-  return { title, verse };
+  const formatVerseTitle = useCallback(
+    ({ book, chapter, number }: Bible.Verse): string =>
+      `${book.name} ${chapter}:${number}`,
+    []
+  );
+
+  const fetchVerse = async () => {
+    const verse = await getDailyVerse();
+    const title = formatVerseTitle(verse);
+
+    setTitle(title);
+    setText(verse.text);
+  };
+
+  useEffect(() => {
+    fetchVerse();
+  }, []);
+
+  return { title, text };
 };

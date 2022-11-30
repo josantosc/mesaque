@@ -8,7 +8,7 @@ import { Paragraph } from "@components/Paragraph";
 import { CardContainer, Container } from "./styles";
 
 export function DailyVerse() {
-  const { title, verse } = useVerse();
+  const { title, text } = useVerse();
 
   return (
     <Container>
@@ -16,7 +16,7 @@ export function DailyVerse() {
       <Card>
         <CardContainer>
           <Subtitle content={title} />
-          <Paragraph content={verse} style={{ marginTop: 8 }} />
+          <Paragraph content={text} style={{ marginTop: 8 }} />
         </CardContainer>
       </Card>
     </Container>
