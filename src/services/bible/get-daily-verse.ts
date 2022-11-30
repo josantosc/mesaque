@@ -2,21 +2,14 @@ import { Bible } from "@shared/domain/Bible";
 import { getVerse } from "@storage/daily-verse/get-verse";
 import { saveVerse } from "@storage/daily-verse/save-verse";
 
+import { getRandomVerse } from "./get-random-verse";
+
 export const getDailyVerse = async (): Promise<Bible.Verse> => {
   const verseStoraged = await getVerse();
 
   if (verseStoraged) return verseStoraged;
 
-  const verse: Bible.Verse = {
-    book: {
-      abbrev: "mt",
-      name: "Mateus",
-      testament: Bible.Testaments.New,
-    },
-    chapter: 8,
-    number: 2,
-    text: 'Um leproso, aproximando-se, adorou-o de joelhos e disse: "Senhor, se quiseres, podes purificar-me!"',
-  };
+  const verse = await getRandomVerse();
 
   await saveVerse(verse);
 

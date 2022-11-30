@@ -18,7 +18,7 @@ export namespace Bible {
   };
 
   export type Verse = {
-    book: Omit<Book, "chapters">;
+    book: Omit<Book, "chapters" | "testament">;
     chapter: number;
     number: number;
     text: string;
