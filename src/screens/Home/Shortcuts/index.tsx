@@ -12,7 +12,7 @@ type ShortcutCardProps = {
 function ShortcutCard({ title }: ShortcutCardProps) {
   return (
     <ShortcutCardContainer>
-      <Card>
+      <Card style={{ padding: 16 }}>
         <Subtitle content={title} />
       </Card>
     </ShortcutCardContainer>
