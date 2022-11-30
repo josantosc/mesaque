@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useNavigation } from "@react-navigation/native";
 
-import logoImg from "@assets/favicon.png";
+import logoImg from "@assets/logo.png";
 import { AppStackNavigationProps } from "@routes/app/stack-params";
 
 import { Container, Logo, BackButton, BackIcon } from "./styles";
@@ -25,7 +25,7 @@ export function Header({ showBackButton = false }: Props) {
         </BackButton>
       )}
 
-      <Logo source={logoImg} />
+      <Logo source={logoImg} resizeMode="contain" />
     </Container>
   );
 }
