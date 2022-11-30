@@ -28,9 +28,9 @@ export function Shortcuts() {
 
   const data: Array<{ title: string; path?: AppScreens }> = [
     { title: "Agenda", path: AppScreens.agenda },
+    { title: "Oferta", path: undefined },
     { title: "Devocional", path: undefined },
     { title: "Eventos", path: undefined },
-    { title: "Oferta", path: undefined },
   ];
 
   const handleOnPress = useCallback((path?: AppScreens) => {
@@ -49,6 +49,7 @@ export function Shortcuts() {
           <ShortcutCard
             title={item.title}
             onPress={() => handleOnPress(item.path)}
+            disabled={!item.path}
           />
         )}
       />

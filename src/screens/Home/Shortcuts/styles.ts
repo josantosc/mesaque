@@ -1,4 +1,4 @@
-import styled from "styled-components/native";
+import styled, { css } from "styled-components/native";
 
 export const Container = styled.View`
   width: 100%;
@@ -8,4 +8,5 @@ export const Container = styled.View`
 export const ShortcutCardContainer = styled.TouchableOpacity`
   flex: 1;
   margin: 8px;
+  opacity: ${(props) => (props.disabled ? 0.4 : 1)};
 `;
