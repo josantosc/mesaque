@@ -1,32 +1,33 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+
+import { Subtitle } from "@components/Subtitle";
+
 import { Card } from "../../../components/Card";
+
+type ShortcutCardProps = {
+  title: string;
+};
+
+function ShortcutCard({ title }: ShortcutCardProps) {
+  return (
+    <Card>
+      <View style={styles.cardContainer}>
+        <Subtitle content={title} />
+      </View>
+    </Card>
+  );
+}
 
 export function Shortcuts() {
   return (
     <View>
       <View style={styles.shortcuts}>
-        <Card>
-          <View style={styles.cardContainer}>
-            <Text style={styles.cardTitle}>Agenda</Text>
-          </View>
-        </Card>
-        <Card>
-          <View style={styles.cardContainer}>
-            <Text style={styles.cardTitle}>Eventos</Text>
-          </View>
-        </Card>
+        <ShortcutCard title="Agenda" />
+        <ShortcutCard title="Devocional" />
       </View>
       <View style={styles.shortcuts}>
-        <Card>
-          <View style={styles.cardContainer}>
-            <Text style={styles.cardTitle}>Devocional</Text>
-          </View>
-        </Card>
-        <Card>
-          <View style={styles.cardContainer}>
-            <Text style={styles.cardTitle}>Oferta</Text>
-          </View>
-        </Card>
+        <ShortcutCard title="Eventos" />
+        <ShortcutCard title="Oferta" />
       </View>
     </View>
   );
