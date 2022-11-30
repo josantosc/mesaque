@@ -11,7 +11,7 @@ export function Home() {
       <Header />
       <Shortcuts />
       <DailyVerse />
-      <Videos />
+      {/* <Videos /> */}
     </Container>
   );
 }
