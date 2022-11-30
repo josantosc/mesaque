@@ -17,7 +17,7 @@ export default {
     GRAY_100: "#E1E1E6",
   },
   FONT_FAMILY: {
-    REGULAR: "Roboto_400Regular",
+    REGULAR: "Roboto_500Medium",
     BOLD: "Roboto_700Bold",
   },
   FONT_SIZE: {
@@ -25,5 +25,11 @@ export default {
     MD: 16,
     LG: 18,
     XL: 24,
+  },
+  LINE_HEIGHT: {
+    SM: 21,
+    MD: 24,
+    LG: 27,
+    XL: 36,
   },
 };
