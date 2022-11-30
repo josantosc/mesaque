@@ -27,7 +27,7 @@ export default {
     XL: 24,
   },
   LINE_HEIGHT: {
-    SM: 21,
+    SM: 16,
     MD: 24,
     LG: 27,
     XL: 36,
