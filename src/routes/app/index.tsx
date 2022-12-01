@@ -4,6 +4,7 @@ import { Header } from "@components/Header";
 
 import { Home } from "@screens/Home";
 import { Agenda } from "@screens/Agenda";
+import { Oferta } from "@screens/Oferta";
 
 import { AppStackParamsList, AppScreens } from "./stack-params";
 
@@ -21,6 +22,7 @@ export function AppRoutes() {
         options={{ header: () => <Header /> }}
       />
       <Screen name={AppScreens.agenda} component={Agenda} />
+      <Screen name={AppScreens.oferta} component={Oferta} />
     </Navigator>
   );
 }
