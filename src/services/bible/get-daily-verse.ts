@@ -13,7 +13,5 @@ export const getDailyVerse = async (): Promise<Bible.Verse> => {
 
   await saveVerse(verse);
 
-  return new Promise((resolve, reject) => {
-    setTimeout(() => resolve(verse), 5000);
-  });
+  return verse;
 };
