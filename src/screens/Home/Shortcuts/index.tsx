@@ -28,7 +28,7 @@ export function Shortcuts() {
 
   const data: Array<{ title: string; path?: AppScreens }> = [
     { title: "Agenda", path: AppScreens.agenda },
-    { title: "Oferta", path: undefined },
+    { title: "Oferta", path: AppScreens.oferta },
     { title: "Devocional", path: undefined },
     { title: "Eventos", path: undefined },
   ];
